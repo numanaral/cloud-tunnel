@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-03-18
+
+### Fixed
+
+- `step()` now writes to stderr so auto-detect info messages no longer leak into the captured origin URL.
+- Replaced `/dev/tcp` TCP check with `nc -z` for macOS compatibility (macOS bash does not support `/dev/tcp`).
+
 ## [0.1.0] - 2026-03-17
 
 ### Added

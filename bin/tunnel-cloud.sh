@@ -7,7 +7,7 @@ set -euo pipefail
 # Platform: macOS, Linux (WSL on Windows).
 # Requires: cloudflared (auto-installed if missing).
 
-VERSION="0.1.0"
+VERSION="0.1.1"
 PROJECT_DIR="$(pwd)"
 TUNNEL_DIR="$PROJECT_DIR/.tunnel"
 
@@ -26,7 +26,7 @@ ok()    { echo -e "${GREEN}✔${NC} $*"; }
 warn()  { echo -e "${YELLOW}⚠${NC} $*"; }
 err()   { echo -e "${RED}✖${NC} $*" >&2; }
 die()   { err "$@"; exit 1; }
-step()  { echo -e "${DIM}→${NC} $*"; }
+step()  { echo -e "${DIM}→${NC} $*" >&2; }
 
 # ── Platform detection ───────────────────────────────────────────────
 
@@ -204,8 +204,8 @@ ensure_origin_reachable() {
   port=$(echo "$origin" | grep -oE ':[0-9]+' | tr -d ':' | head -1)
   port="${port:-80}"
 
-  # Quick TCP check.
-  if ! (echo >/dev/tcp/"$host"/"$port") 2>/dev/null; then
+  # Quick TCP check (nc works on both macOS and Linux, unlike /dev/tcp).
+  if ! nc -z -w 2 "$host" "$port" 2>/dev/null; then
     err "Cannot reach origin at ${BOLD}$origin${NC}"
     echo ""
     echo "  Make sure your dev server is running first. For example:"

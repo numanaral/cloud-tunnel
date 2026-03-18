@@ -1,6 +1,6 @@
 {
   "name": "tunnel-cloud",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Hassle-free CLI to expose local dev servers via Cloudflare Tunnels with stable subdomains.",
   "license": "MIT",
   "author": "numanaral",
