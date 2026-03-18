@@ -1,0 +1,33 @@
+{
+  "name": "tunnel-cloud",
+  "version": "0.1.0",
+  "description": "Hassle-free CLI to expose local dev servers via Cloudflare Tunnels with stable subdomains.",
+  "license": "MIT",
+  "author": "numanaral",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/numanaral/tunnel-cloud"
+  },
+  "keywords": [
+    "cloudflare",
+    "tunnel",
+    "ngrok",
+    "dev",
+    "localhost",
+    "expose",
+    "cli"
+  ],
+  "bin": {
+    "tunnel-cloud": "bin/tunnel-cloud.sh"
+  },
+  "files": [
+    "bin/"
+  ],
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "engines": {
+    "node": ">=16"
+  }
+}
